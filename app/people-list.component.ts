@@ -16,7 +16,10 @@ export class PeopleListComponent {
   people: Person[] = [];
 
   constructor(private _peopleService : PeopleService){
-    this.people = _peopleService.getAll();
+  }
+
+  ngOnInit(){
+    this.people = this._peopleService.getAll();
   }
 }
 
