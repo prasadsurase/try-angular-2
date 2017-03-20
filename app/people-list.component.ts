@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Person } from './person';
+import { PeopleService } from './people.service';
 
 @Component({
   selector: 'people-list',
@@ -12,10 +13,10 @@ import { Person } from './person';
 })
 
 export class PeopleListComponent {
-  people: Person[] = [
-    { name: 'Luke Skywaker', height: 177, weight: 70 },
-    { name: 'Darth Vader', height: 200, weight: 100 },
-    { name: 'Han Solo', height: 185, weight: 85 }
-  ];
+  people: Person[] = [];
+
+  constructor(private _peopleService : PeopleService){
+    this.people = _peopleService.getAll();
+  }
 }
 
