@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Person } from './person';
 import { PeopleService } from './people.service';
 
@@ -7,19 +7,26 @@ import { PeopleService } from './people.service';
   template: `
   <ul>
     <li *ngFor="let person of people">
-      {{person.name}}
+      <a href="#" (click)="selectPerson(person)"> {{person.name}} </a>
     </li>
-  </ul>`
+  </ul>
+  <person-details [person]="selectedPerson"></person-details>
+  `
 })
 
-export class PeopleListComponent {
+export class PeopleListComponent implements OnInit {
   people: Person[] = [];
+  selectedPerson: Person;
 
-  constructor(private _peopleService : PeopleService){
+  constructor(private peopleService : PeopleService){
   }
 
   ngOnInit(){
-    this.people = this._peopleService.getAll();
+    this.people = this.peopleService.getAll();
+  }
+
+  selectPerson(person: Person){
+    this.selectedPerson = person;
   }
 }
 
