@@ -4,13 +4,7 @@ import { PeopleService } from './people.service';
 
 @Component({
   selector: 'people-list',
-  template: `
-  <ul>
-    <li *ngFor="let person of people">
-      <a href="#" [routerLink]="['/persons', person.id]"> {{person.name}} </a>
-    </li>
-  </ul>
-  `
+  templateUrl: 'app/people-list.component.html'
 })
 
 export class PeopleListComponent implements OnInit {

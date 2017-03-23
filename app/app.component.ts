@@ -3,9 +3,7 @@ import { PeopleService } from './people.service';
 
 @Component({
   selector: 'my-app',
-  template: `<h1>{{title}}</h1>
-  <router-outlet></router-outlet>
-  `,
+  templateUrl: 'app/app.component.html',
   providers: [ PeopleService ]
 })
 

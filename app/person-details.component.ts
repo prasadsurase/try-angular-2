@@ -5,16 +5,7 @@ import { Person } from './person';
 
 @Component({
   selector: 'person-details',
-  template: `
-  <section *ngIf="person">
-    <h2>{{person.name}}</h2>
-    <h3>Description</h3>
-    <p>
-      {{person.name}} weights {{person.weight}} and is {{person.height}} cms tall.
-    </p>
-  </section>
-  <button (click)="gotoPeoplesList()">Back to peoples list</button>
-  `
+  templateUrl: 'app/person-details.component.html'
 })
 
 export class PersonDetailsComponent implements OnInit, OnDestroy {
