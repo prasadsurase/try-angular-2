@@ -1,8 +1,42 @@
 <section *ngIf="person">
-  <h2>{{person.name}}</h2>
-  <h3>Description</h3>
-  <p>
-  {{person.name}} weights {{person.weight}} and is {{person.height}} cms tall.
-  </p>
+  <section>
+    <h2>{{person.name}}</h2>
+    <h3>Description</h3>
+    <p>
+    {{person.name}} weights {{person.weight}} and is {{person.height}} cms tall.
+    </p>
+  </section>
+  <section>
+    <form #personForm="ngForm" (ngSubmit)="updatePersonDetails()">
+      <div>
+        <label for="name">Name: </label>
+        <input type="text" name="name" [(ngModel)]="person.name" required #name="ngModel">
+        <div [hidden]="name.valid || name.pristine" class="error">
+          Name is required
+        </div>
+      </div>
+      <div>
+        <label for="weight">Weight: </label>
+        <input type="number" name="weight" [(ngModel)]="person.weight" required #weight="ngModel">
+        <div [hidden]="weight.valid || weight.pristine" class="error">
+          Weight is required
+        </div>
+      </div>
+      <div>
+        <label for="height">Height: </label>
+        <input type="number" name="height" [(ngModel)]="person.height" required #height="ngModel">
+        <div [hidden]="height.valid || height.pristine" class="error">
+          Height is required
+        </div>
+      </div>
+      <div>
+        <label for="profession">Profession: </label>
+        <select name="profession" [(ngModel)]="person.profession">
+          <option *ngFor="let profession of professions" [value]="profession">{{ profession }} </option>
+        </select>
+      </div>
+      <button type="submit" [disabled]="!personForm.form.valid">Save</button>
+    </form>
+  </section>
+  <button (click)="gotoPeoplesList()">Back to peoples list</button>
 </section>
-<button (click)="gotoPeoplesList()">Back to peoples list</button>

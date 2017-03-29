@@ -11,6 +11,7 @@ import { Person } from './person';
 export class PersonDetailsComponent implements OnInit, OnDestroy {
   person: Person;
   sub: any;
+  professions: string[] = ['jedi', 'princess', 'bounty hunter'];
 
   constructor(private peopleService : PeopleService, private route : ActivatedRoute, private router: Router) {
   }
@@ -29,6 +30,11 @@ export class PersonDetailsComponent implements OnInit, OnDestroy {
   gotoPeoplesList(){
     let link = ['/persons'];
     this.router.navigate(link);
+  }
+
+  updatePersonDetails(){
+    this.peopleService.update(this.person);
+    alert(`saved!!! ${JSON.stringify(this.person)}`);
   }
 }
 
